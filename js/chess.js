@@ -9,7 +9,7 @@ class chess{
         this.selfHeight=25
         this.stepLengthX=false
         this.stepLengthY=false
-        this.stepNum=10
+        this.stepNum=15
     }
     drawChess(){
         this.img.onload=()=>{

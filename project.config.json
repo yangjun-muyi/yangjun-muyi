@@ -41,7 +41,7 @@
     "compileType": "game",
     "libVersion": "2.20.1",
     "appid": "wx9d48d896792964ff",
-    "projectname": "RectangleChess",
+    "projectname": "recGame",
     "packOptions": {
         "ignore": [
             {

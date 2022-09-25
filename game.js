@@ -24,6 +24,7 @@ const GetChessPointArr=Dataxy.getChessPointArr()
 let chessArr = []
 let currentArrXY=[],nextArrXY=[]
 let clickArr={}
+let againCome=0
 
 function reset() {
     ctx.save();
@@ -64,7 +65,6 @@ function touchEventHandler(e) {
     } else {
         findStartEnd(x,y)
         if(nextArrXY.length){
-            console.log(currentArrXY,nextArrXY)
             playMoveAction(nextArrXY)
             currentArrXY=nextArrXY.concat()
             nextArrXY=[]
@@ -72,16 +72,16 @@ function touchEventHandler(e) {
     }
 }
 function findStartEnd(x,y){
-    if(clickArr.start){
+    if(clickArr.start==0||clickArr.start){
         for(let i in GetChessPointArr){
             const x0=GetChessPointArr[i].x-Dataxy.offsetTouch/2
             const x1=GetChessPointArr[i].x+Dataxy.offsetTouch/2
             const y0=GetChessPointArr[i].y-Dataxy.offsetTouch/2
             const y1=GetChessPointArr[i].y+Dataxy.offsetTouch/2
             if(x>x0&&x<x1&&y>y0&&y<y1){
-                clickArr.end={index:i,data:GetChessPointArr[i]}
                 nextArrXY=currentArrXY.concat()
-                nextArrXY[clickArr.start.index]=GetChessPointArr[i]
+                nextArrXY[clickArr.start]=GetChessPointArr[i]
+                clickArr.start=null
             }
         }
     }else{
@@ -91,7 +91,7 @@ function findStartEnd(x,y){
             const y0=currentArrXY[i].y-Dataxy.offsetTouch/2
             const y1=currentArrXY[i].y+Dataxy.offsetTouch/2
             if(x>x0&&x<x1&&y>y0&&y<y1){
-                clickArr.start={index:i,data:currentArrXY[i]}
+                clickArr.start=i
             }
         }
     }
@@ -127,16 +127,27 @@ function playMoveAction(detailArrs, n = 0) {
             if (n >= chessArr[0].stepNum) {
                 cancelAnimationFrame(canid)
             }else{
-                playMoveAction(n)
+                playMoveAction(detailArrs,n)
             }
         }
     )
 }
+wx.onShow(()=>{
+    againCome++;
+    if(againCome==1){
+        reset();
+        drawFigure();
+        drawChessInit();
+        drawButtons();
+        canvas.addEventListener('touchstart', touchEventHandler)
+    }else{
+        reset();
+        drawFigure();
+        playMoveAction(currentArrXY)
+        drawButtons();
+    }
+})
+wx.onHide(function(res){
+    againCome++
+})
 
-setTimeout(() => {
-    reset();
-    drawFigure();
-    drawChessInit();
-    drawButtons();
-    canvas.addEventListener('touchstart', touchEventHandler)
-}, 1000);

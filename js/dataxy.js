@@ -13,12 +13,12 @@ class dataxy {
                 y: y_i
             },
             {
-                img: 'img/2.png',
+                img: 'img/1.png',
                 x: x_i + 20,
                 y: y_i
             },
             {
-                img: 'img/3.png',
+                img: 'img/1.png',
                 x: x_i + 40,
                 y: y_i
             },
@@ -28,12 +28,12 @@ class dataxy {
                 y: y_i * 13
             },
             {
-                img: 'img/5.png',
+                img: 'img/4.png',
                 x: x_i * 9 - 20,
                 y: y_i * 13
             },
             {
-                img: 'img/6.png',
+                img: 'img/4.png',
                 x: x_i * 9,
                 y: y_i * 13
             },
