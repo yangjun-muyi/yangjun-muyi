@@ -33,7 +33,6 @@ class figure{
         this.ctx.restore()
     }
     figure1(arrPointsLine){
-        
         let arrPointsArc=[
             // {x:160,y:284,r:100*Math.SQRT2,startAngle:0,endAngle:360},
             // {x:160,y:284,r:100,startAngle:0,endAngle:360},

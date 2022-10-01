@@ -1,15 +1,16 @@
 class chess{
-    constructor(ctx,img,x,y,selfOffsetX=25,selfOffsetY=25){
+    constructor(ctx,img,x,y,index,selfOffsetX=15,selfOffsetY=15){
         this.img=wx.createImage()
         this.img.src=img
         this.ctx=ctx
         this.x=x
         this.y=y
-        this.selfWidth=25
-        this.selfHeight=25
+        this.selfWidth=40
+        this.selfHeight=40
         this.stepLengthX=false
         this.stepLengthY=false
-        this.stepNum=15
+        this.stepNum=25
+        this.index=index
     }
     drawChess(){
         this.img.onload=()=>{
